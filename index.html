@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>서울공고 드론 동아리</title>
 
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet">
+
 <style>
 
 body{
@@ -14,29 +16,33 @@ background:#0b0f1a;
 color:white;
 }
 
-header{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(0,0,0,0.6);
-padding:15px;
-z-index:10;
-}
-
 nav{
+background:#111827;
+padding:15px;
 display:flex;
-gap:25px;
+gap:20px;
 justify-content:center;
-font-weight:bold;
+position:sticky;
+top:0;
 }
 
-nav a{
-color:white;
-text-decoration:none;
+nav span{
+cursor:pointer;
+}
+
+.section{
+display:none;
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.active{
+display:block;
 }
 
 .hero{
-height:100vh;
+height:90vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -59,41 +65,32 @@ padding:20px;
 border-radius:10px;
 }
 
-section{
-padding:80px 20px;
-max-width:1100px;
-margin:auto;
-}
-
-.card{
-background:#151a2e;
-padding:20px;
-border-radius:10px;
-margin:10px;
-}
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
+.card{
+background:#1f2937;
+padding:20px;
+border-radius:10px;
+}
+
 .badge{
-background:#0077ff;
+background:#2563eb;
 padding:5px 10px;
 border-radius:5px;
 font-size:12px;
 }
 
-.gallery img{
-width:100%;
-border-radius:10px;
-}
-
-footer{
-text-align:center;
-padding:30px;
-background:#05070f;
+button{
+padding:10px 20px;
+background:#2563eb;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
 }
 
 </style>
@@ -101,88 +98,166 @@ background:#05070f;
 
 <body>
 
-<header>
 <nav>
-<a href="#home">HOME</a>
-<a href="#about">동아리</a>
-<a href="#members">부원</a>
-<a href="#gallery">갤러리</a>
-</nav>
-</header>
 
-<section class="hero" id="home">
+<span onclick="showSection('home')">HOME</span>
+<span onclick="showSection('about')">동아리</span>
+<span onclick="showSection('members')">부원</span>
+<span onclick="showSection('gallery')">갤러리</span>
+<span onclick="showSection('schedule')">비행일정</span>
+<span onclick="showSection('map')">NOTAM / 지도</span>
+<span onclick="showSection('apply')">비행신청</span>
+<span onclick="showSection('memberonly')">부원전용</span>
+
+</nav>
+
+<!-- 홈 -->
+<section id="home" class="section active hero">
+
 <img src="school_drone.jpg">
 
+<div>
+
 <h1>
-서울공고 드론 동아리<br>
-Seoul Technical High School Drone Club
+서울공고 드론 동아리
 </h1>
+
+<p>Seoul Technical High School Drone Club</p>
+
+<br>
+
+<button onclick="showSection('about')">동아리 보기</button>
+
+</div>
+
 </section>
 
-<section id="about">
+
+<!-- 동아리 -->
+<section id="about" class="section">
+
 <h2>동아리 소개</h2>
+
+<p>
+지도교사 : 이효진 선생님
+</p>
+
+<h3>보유 기체</h3>
+
+<div class="grid">
 
 <div class="card">
 
-지도교사 : 이효진 선생님
+<h3>E616S-K3</h3>
 
-<br><br>
-
-서울공업고등학교 드론 동아리는  
-드론 비행, 항공촬영, 드론 정비 및 산업용 드론 운용 기술을 연구하는 동아리입니다.
-
-<br><br>
-
-보유 기체
-
-<ul>
-<li>E616S-K3 기능대회 기체</li>
-<li>DJI Mavic 2</li>
-<li>DJI Mavic 3</li>
-<li>DJI Phantom</li>
-<li>DJI Inspire</li>
-<li>DJI Avata</li>
-</ul>
+기능대회 연습 및 훈련용 기체
 
 </div>
+
+<div class="card">
+
+<h3>기능대회 기체</h3>
+
+전국 기능경기대회 드론 직종 전용 기체
+
+</div>
+
+<div class="card">
+
+DJI Mavic 2
+
+</div>
+
+<div class="card">
+
+DJI Mavic 3
+
+</div>
+
+<div class="card">
+
+DJI Phantom
+
+</div>
+
+<div class="card">
+
+DJI Inspire
+
+</div>
+
+<div class="card">
+
+DJI Avata
+
+</div>
+
+</div>
+
 </section>
 
-<section id="members">
+
+<!-- 부원 -->
+<section id="members" class="section">
+
 <h2>부원</h2>
 
 <div class="grid">
 
 <div class="card">
-김형민<br>
+
+김형민
+
+<br>
+
 <span class="badge">1종 자격증</span>
 <span class="badge">기능대회 선수</span>
+
 </div>
 
 <div class="card">
-백승호<br>
+
+백승호
+
+<br>
+
 <span class="badge">1종 자격증</span>
 <span class="badge">기능대회 선수</span>
+
 </div>
 
 <div class="card">
-하지성<br>
+
+하지성
+
+<br>
+
 <span class="badge">기능대회 선수</span>
+
 </div>
 
 <div class="card">
-박우영<br>
+
+박우영
+
+<br>
+
 <span class="badge">1종 자격증</span>
 <span class="badge">기능대회 선수</span>
+
 </div>
 
 </div>
+
 </section>
 
-<section id="gallery">
 
-<h2>활동 갤러리</h2>
+<!-- 갤러리 -->
+<section id="gallery" class="section">
 
-<div class="grid gallery">
+<h2>갤러리</h2>
+
+<div class="grid">
 
 <img src="photo1.jpg">
 <img src="photo2.jpg">
@@ -193,12 +268,129 @@ Seoul Technical High School Drone Club
 
 </section>
 
-<footer>
 
-서울공업고등학교 드론 동아리  
-Seoul Technical High School Drone Club
+<!-- 캘린더 -->
+<section id="schedule" class="section">
 
-</footer>
+<h2>비행 일정</h2>
+
+<div id="calendar"></div>
+
+</section>
+
+
+<!-- 지도 -->
+<section id="map" class="section">
+
+<h2>비행 지도</h2>
+
+<iframe
+width="100%"
+height="450"
+style="border:0"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=서울공업고등학교&output=embed">
+</iframe>
+
+<br><br>
+
+<button onclick="window.open('https://notam.koca.go.kr')">
+
+NOTAM 확인하기
+
+</button>
+
+</section>
+
+
+<!-- 비행신청 -->
+<section id="apply" class="section">
+
+<h2>비행 신청 안내</h2>
+
+<p>
+
+드론 비행 승인 및 장치 신고는 아래 사이트에서 가능합니다.
+
+</p>
+
+<ul>
+
+<li>비행 승인</li>
+
+<li>장치 신고</li>
+
+<li>비행 계획 제출</li>
+
+</ul>
+
+<button onclick="window.open('https://drone.onestop.go.kr')">
+
+드론 원스톱 민원 서비스 이동
+
+</button>
+
+</section>
+
+
+<!-- 부원전용 -->
+<section id="memberonly" class="section">
+
+<h2>부원 전용 페이지</h2>
+
+<p>
+
+부원 자료 / 훈련 자료 / 비행 기록
+
+</p>
+
+<p>
+
+로그인 기능은 추후 추가 예정
+
+</p>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+<script>
+
+function showSection(id){
+
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id).classList.add('active');
+
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+
+var calendarEl=document.getElementById('calendar');
+
+var calendar=new FullCalendar.Calendar(calendarEl,{
+
+initialView:'dayGridMonth',
+
+events:[
+
+{title:'드론 훈련',date:'2026-03-10'},
+
+{title:'항공 촬영',date:'2026-03-15'},
+
+{title:'정비 교육',date:'2026-03-22'}
+
+]
+
+});
+
+calendar.render();
+
+});
+
+</script>
 
 </body>
 </html>
